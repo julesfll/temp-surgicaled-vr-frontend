@@ -3,7 +3,6 @@
     "allowImportingTsExtensions": true,
 
     /* Path aliases */
-    "baseUrl": ".",
     "jsx": "react-jsx",
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "module": "esnext",

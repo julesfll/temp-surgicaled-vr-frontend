@@ -4,7 +4,7 @@
  * These are placeholder shapes — update to match the backend API spec once defined.
  */
 
-export type UserRole = "admin" | "trainer" | "trainee";
+export type UserRole = "platform_admin" | "institution_admin" | "trainer" | "trainee";
 
 export interface User {
   id: string;

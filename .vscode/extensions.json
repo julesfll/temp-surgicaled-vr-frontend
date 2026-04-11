@@ -2,7 +2,6 @@
   "recommendations": [
     "biomejs.biome",
     "bradlc.vscode-tailwindcss",
-    "ms-vscode.vscode-typescript-next",
     "streetsidesoftware.code-spell-checker",
     "anthropic.claude-code"
   ]

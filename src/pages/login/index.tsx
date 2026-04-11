@@ -1,16 +1,25 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useLogin } from "@refinedev/core";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { type LoginFormValues, loginSchema } from "@/schemas/auth";
 
 export function LoginPage() {
-  const { mutate: login, isPending: isLoading } = useLogin<{ email: string; password: string }>();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { mutate: login, isPending } = useLogin<LoginFormValues>();
 
-  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    login({ email, password });
-  };
+  const form = useForm<LoginFormValues>({
+    defaultValues: { email: "", password: "" },
+    resolver: zodResolver(loginSchema),
+  });
 
   return (
     <div className="flex min-h-svh items-center justify-center bg-background">
@@ -19,39 +28,42 @@ export function LoginPage() {
           <h1 className="text-2xl font-bold">SurgicalEd VR</h1>
           <p className="text-sm text-muted-foreground">Sign in to your account</p>
         </div>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="email" className="text-sm font-medium">
-              Email
-            </label>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              autoComplete="email"
-              className="rounded-md border bg-background px-3 py-2 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit((values) => login(values))}
+            className="flex flex-col gap-4"
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input type="email" autoComplete="email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="password" className="text-sm font-medium">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              autoComplete="current-password"
-              className="rounded-md border bg-background px-3 py-2 text-sm outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password" autoComplete="current-password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Signing in…" : "Sign in"}
-          </Button>
-        </form>
+            <Button type="submit" className="w-full" disabled={isPending}>
+              {isPending ? "Signing in…" : "Sign in"}
+            </Button>
+          </form>
+        </Form>
       </div>
     </div>
   );

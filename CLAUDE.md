@@ -85,10 +85,67 @@ Base shadcn components copied into the project. Also project-owned and customiza
 - **Linting**: Use BiomeJS — NOT ESLint. Run `pnpm check` to lint and format.
 - **Imports**: Biome organizes imports automatically. Don't manually sort.
 - **Refine hooks first**: Use Refine's built-in hooks (`useList`, `useOne`, `useCreate`, `useUpdate`, `useDelete`, `useForm`, `useCan`, `useGetIdentity`, `useMenu`, etc.) for all data/auth/navigation. Don't reinvent what Refine provides.
-- **RBAC**: Use `useCan` from `@refinedev/core` in components to check permissions. Use `<CanAccess>` for conditional rendering. Roles: `admin`, `trainer`, `trainee`.
-- **Forms**: Use `useForm` from `@refinedev/react-hook-form` (wraps react-hook-form with Refine data binding).
+- **RBAC**: Use `useCan` from `@refinedev/core` in components to check permissions. Use `<CanAccess>` for conditional rendering. Roles: `platform_admin`, `institution_admin`, `trainer`, `trainee`.
 - **Notifications**: Use Refine's `useNotification()` hook — it's connected to the Sonner toast provider.
 - **API mocking**: Add MSW handlers to `src/mocks/handlers.ts` when API spec is defined. Run `pnpm dev:mock` to test locally without the backend.
+
+### Forms (react-hook-form + zod)
+
+Zod schemas live in `src/schemas/<resource>.ts` and export both the schema and its inferred type.
+
+Always wrap form JSX in the shadcn `<Form>` wrapper and use `<FormField>` → `<FormItem>` → `<FormControl>` / `<FormMessage>` for each input so validation errors render automatically.
+
+**CRUD forms** (create/edit resource pages) — use `useForm` from `@refinedev/react-hook-form` to bind to the data provider:
+
+```ts
+import { useForm } from "@refinedev/react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { userSchema, type UserFormValues } from "@/schemas/users";
+
+const form = useForm<UserFormValues>({
+  resolver: zodResolver(userSchema),
+  refineCoreProps: { resource: "users", action: "create" },
+});
+```
+
+**Non-CRUD forms** (login, filters, etc.) — use plain `useForm` from `react-hook-form`:
+
+```ts
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginSchema, type LoginFormValues } from "@/schemas/auth";
+
+const form = useForm<LoginFormValues>({
+  resolver: zodResolver(loginSchema),
+  defaultValues: { email: "", password: "" },
+});
+```
+
+See `src/pages/login/index.tsx` for the canonical non-CRUD form example.
+
+### Tables (TanStack Table via Refine)
+
+Use `useTable` from `@refinedev/react-table` for resource list pages. Pass the result into the existing `<DataTable>` wrapper — do **not** call `useTable` inside `DataTable`.
+
+```ts
+import { useTable } from "@refinedev/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
+import { DataTable } from "@/components/refine-ui/data-table/data-table";
+
+const columns: ColumnDef<User>[] = [
+  { accessorKey: "name", header: "Name", meta: { filterOperator: "contains" } },
+  // ...
+];
+
+const table = useTable<User>({
+  columns,
+  refineCoreProps: { resource: "users" },
+});
+
+return <DataTable table={table} />;
+```
+
+Sorting, pagination, and filtering are handled by Refine via the data provider. Filter operators (`"contains"`, `"eq"`, etc.) live on `columnDef.meta.filterOperator`.
 
 ---
 

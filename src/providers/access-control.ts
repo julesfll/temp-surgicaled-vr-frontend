@@ -4,30 +4,37 @@ import type { AccessControlProvider } from "@refinedev/core";
 type Action = "list" | "show" | "create" | "edit" | "delete" | string;
 
 /**
- * RBAC permission matrix.
+ * RBAC permission matrix — multi-tenant system.
  *
- * Role capabilities (subject to product decisions):
- *   admin   - full access to all resources
- *   trainer - can manage users within their institution; read-only on results/sessions
- *   trainee - read-only access to their own sessions and results
+ * Scoping (which tenant's data is visible) is enforced server-side.
+ * This matrix only defines which actions each role may perform at all.
  *
- * Expand this matrix as features are defined.
+ *   platform_admin    — full access across all institutions
+ *   institution_admin — manage their institution and its users
+ *   trainer           — invite/manage their users, view stats
+ *   trainee           — own profile and stats only
  */
 const permissions: Record<UserRole, Record<string, Action[]>> = {
-  admin: {
+  platform_admin: {
     users: ["list", "show", "create", "edit", "delete"],
     institutions: ["list", "show", "create", "edit", "delete"],
     sessions: ["list", "show"],
     results: ["list", "show"],
   },
+  institution_admin: {
+    users: ["list", "show", "create", "edit", "delete"],
+    institutions: ["show", "edit"],
+    sessions: ["list", "show"],
+    results: ["list", "show"],
+  },
   trainer: {
     users: ["list", "show", "create", "edit"],
-    institutions: ["list", "show"],
+    institutions: ["show"],
     sessions: ["list", "show"],
     results: ["list", "show"],
   },
   trainee: {
-    users: [],
+    users: ["show"],
     institutions: ["show"],
     sessions: ["list", "show"],
     results: ["list", "show"],

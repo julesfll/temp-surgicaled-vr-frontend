@@ -215,12 +215,12 @@ function DataTableNoData({
             "bg-background",
           )}
           style={{
-            position: isOverflowing.horizontal ? "sticky" : "absolute",
             left: isOverflowing.horizontal ? "50%" : "50%",
-            transform: "translateX(-50%)",
-            zIndex: isOverflowing.horizontal ? 2 : 1,
-            width: isOverflowing.horizontal ? "fit-content" : "100%",
             minWidth: "300px",
+            position: isOverflowing.horizontal ? "sticky" : "absolute",
+            transform: "translateX(-50%)",
+            width: isOverflowing.horizontal ? "fit-content" : "100%",
+            zIndex: isOverflowing.horizontal ? 2 : 1,
           }}
         >
           <div className={cn("text-lg", "font-semibold", "text-foreground")}>
@@ -250,6 +250,15 @@ export function getCommonStyles<TData>({
   const isFirstRightPinnedColumn = isPinned === "right" && column.getIsFirstColumn("right");
 
   return {
+    background: isOverflowing.horizontal && isPinned ? "var(--background)" : "",
+    borderBottomLeftRadius:
+      isOverflowing.horizontal && isPinned === "left" ? "var(--radius)" : undefined,
+    borderBottomRightRadius:
+      isOverflowing.horizontal && isPinned === "right" ? "var(--radius)" : undefined,
+    borderTopLeftRadius:
+      isOverflowing.horizontal && isPinned === "left" ? "var(--radius)" : undefined,
+    borderTopRightRadius:
+      isOverflowing.horizontal && isPinned === "right" ? "var(--radius)" : undefined,
     boxShadow:
       isOverflowing.horizontal && isLastLeftPinnedColumn
         ? "-4px 0 4px -4px var(--border) inset"
@@ -258,21 +267,12 @@ export function getCommonStyles<TData>({
           : undefined,
     left:
       isOverflowing.horizontal && isPinned === "left" ? `${column.getStart("left")}px` : undefined,
+    opacity: 1,
+    position: isOverflowing.horizontal && isPinned ? "sticky" : "relative",
     right:
       isOverflowing.horizontal && isPinned === "right"
         ? `${column.getAfter("right")}px`
         : undefined,
-    opacity: 1,
-    position: isOverflowing.horizontal && isPinned ? "sticky" : "relative",
-    background: isOverflowing.horizontal && isPinned ? "var(--background)" : "",
-    borderTopRightRadius:
-      isOverflowing.horizontal && isPinned === "right" ? "var(--radius)" : undefined,
-    borderBottomRightRadius:
-      isOverflowing.horizontal && isPinned === "right" ? "var(--radius)" : undefined,
-    borderTopLeftRadius:
-      isOverflowing.horizontal && isPinned === "left" ? "var(--radius)" : undefined,
-    borderBottomLeftRadius:
-      isOverflowing.horizontal && isPinned === "left" ? "var(--radius)" : undefined,
     width: column.getSize(),
     zIndex: isOverflowing.horizontal && isPinned ? 1 : 0,
   };

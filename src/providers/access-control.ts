@@ -1,5 +1,5 @@
-import type { UserRole } from "@/types";
 import type { AccessControlProvider } from "@refinedev/core";
+import type { UserRole } from "@/types";
 
 type Action = "list" | "show" | "create" | "edit" | "delete" | string;
 
@@ -15,29 +15,29 @@ type Action = "list" | "show" | "create" | "edit" | "delete" | string;
  *   trainee           — own profile and stats only
  */
 const permissions: Record<UserRole, Record<string, Action[]>> = {
-  platform_admin: {
-    users: ["list", "show", "create", "edit", "delete"],
-    institutions: ["list", "show", "create", "edit", "delete"],
-    sessions: ["list", "show"],
-    results: ["list", "show"],
-  },
   institution_admin: {
-    users: ["list", "show", "create", "edit", "delete"],
     institutions: ["show", "edit"],
-    sessions: ["list", "show"],
     results: ["list", "show"],
+    sessions: ["list", "show"],
+    users: ["list", "show", "create", "edit", "delete"],
   },
-  trainer: {
-    users: ["list", "show", "create", "edit"],
-    institutions: ["show"],
-    sessions: ["list", "show"],
+  platform_admin: {
+    institutions: ["list", "show", "create", "edit", "delete"],
     results: ["list", "show"],
+    sessions: ["list", "show"],
+    users: ["list", "show", "create", "edit", "delete"],
   },
   trainee: {
-    users: ["show"],
     institutions: ["show"],
-    sessions: ["list", "show"],
     results: ["list", "show"],
+    sessions: ["list", "show"],
+    users: ["show"],
+  },
+  trainer: {
+    institutions: ["show"],
+    results: ["list", "show"],
+    sessions: ["list", "show"],
+    users: ["list", "show", "create", "edit"],
   },
 };
 

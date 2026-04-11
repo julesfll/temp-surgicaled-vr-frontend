@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { type BaseKey, useCreateButton } from "@refinedev/core";
 import { Plus } from "lucide-react";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 type CreateButtonProps = {
   /**
@@ -28,9 +28,9 @@ type CreateButtonProps = {
 export const CreateButton = React.forwardRef<React.ComponentRef<typeof Button>, CreateButtonProps>(
   ({ resource, accessControl, meta, children, onClick, ...rest }, ref) => {
     const { hidden, disabled, LinkComponent, to, label } = useCreateButton({
-      resource,
       accessControl,
       meta,
+      resource,
     });
 
     const isDisabled = disabled || rest.disabled;

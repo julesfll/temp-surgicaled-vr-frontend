@@ -1,5 +1,7 @@
 "use client";
 
+import { Check, ChevronDown, Monitor, Moon, Sun } from "lucide-react";
+import type React from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,8 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
-import { Check, ChevronDown, Monitor, Moon, Sun } from "lucide-react";
-import type React from "react";
 import { useTheme } from "./theme-provider";
 
 type ThemeOption = {
@@ -20,19 +20,19 @@ type ThemeOption = {
 
 const themeOptions: ThemeOption[] = [
   {
-    value: "light",
-    label: "Light",
     icon: <Sun className="h-4 w-4" />,
+    label: "Light",
+    value: "light",
   },
   {
-    value: "dark",
-    label: "Dark",
     icon: <Moon className="h-4 w-4" />,
+    label: "Dark",
+    value: "dark",
   },
   {
-    value: "system",
-    label: "System",
     icon: <Monitor className="h-4 w-4" />,
+    label: "System",
+    value: "system",
   },
 ];
 

@@ -1,5 +1,8 @@
 "use client";
 
+import { matchResourceFromRoute, useBreadcrumb, useLink, useResourceParams } from "@refinedev/core";
+import { Home } from "lucide-react";
+import { Fragment, useMemo } from "react";
 import {
   Breadcrumb as ShadcnBreadcrumb,
   BreadcrumbItem as ShadcnBreadcrumbItem,
@@ -7,9 +10,6 @@ import {
   BreadcrumbPage as ShadcnBreadcrumbPage,
   BreadcrumbSeparator as ShadcnBreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { matchResourceFromRoute, useBreadcrumb, useLink, useResourceParams } from "@refinedev/core";
-import { Home } from "lucide-react";
-import { Fragment, useMemo } from "react";
 
 export function Breadcrumb() {
   const Link = useLink();
@@ -25,20 +25,20 @@ export function Breadcrumb() {
     }[] = [];
 
     list.push({
-      key: "breadcrumb-item-home",
-      href: rootRouteResource.matchedRoute ?? "/",
       Component: (
         <Link to={rootRouteResource.matchedRoute ?? "/"}>
           {rootRouteResource?.resource?.meta?.icon ?? <Home className="h-4 w-4" />}
         </Link>
       ),
+      href: rootRouteResource.matchedRoute ?? "/",
+      key: "breadcrumb-item-home",
     });
 
     for (const { label, href } of breadcrumbs) {
       list.push({
-        key: `breadcrumb-item-${label}`,
-        href: href ?? "",
         Component: href ? <Link to={href}>{label}</Link> : <span>{label}</span>,
+        href: href ?? "",
+        key: `breadcrumb-item-${label}`,
       });
     }
 

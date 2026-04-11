@@ -1,9 +1,9 @@
 "use client";
 
+import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/refine-ui/theme/theme-provider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Monitor, Moon, Sun } from "lucide-react";
 
 type ThemeToggleProps = {
   className?: string;
@@ -80,8 +80,8 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           "transition-all",
           "duration-200",
           {
-            "scale-100": theme === "system",
             "scale-0": theme === "light" || theme === "dark",
+            "scale-100": theme === "system",
           },
         )}
       />

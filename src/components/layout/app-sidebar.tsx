@@ -1,3 +1,5 @@
+import { useMenu } from "@refinedev/core";
+import { Link, useLocation } from "react-router";
 import {
   Sidebar,
   SidebarContent,
@@ -9,8 +11,6 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
-import { useMenu } from "@refinedev/core";
-import { Link, useLocation } from "react-router";
 
 export function AppSidebar() {
   const { menuItems } = useMenu();

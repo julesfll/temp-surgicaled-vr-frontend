@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { type BaseKey, useDeleteButton } from "@refinedev/core";
 import { Loader2, Trash } from "lucide-react";
 import React from "react";
+import { Button } from "@/components/ui/button";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 type DeleteButtonProps = {
   /**
@@ -43,10 +43,10 @@ export const DeleteButton = React.forwardRef<React.ComponentRef<typeof Button>, 
       confirmOkLabel: defaultConfirmOkLabel,
       cancelLabel: defaultCancelLabel,
     } = useDeleteButton({
-      resource,
-      id: recordItemId,
       accessControl,
+      id: recordItemId,
       meta,
+      resource,
     });
     const [open, setOpen] = React.useState(false);
 

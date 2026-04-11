@@ -1,7 +1,7 @@
 "use client";
 
-import { useTheme } from "@/components/refine-ui/theme/theme-provider";
 import { Toaster as Sonner, type ToasterProps } from "sonner";
+import { useTheme } from "@/components/refine-ui/theme/theme-provider";
 
 export function Toaster({ ...props }: ToasterProps) {
   const { theme = "system" } = useTheme();
@@ -13,8 +13,8 @@ export function Toaster({ ...props }: ToasterProps) {
       style={
         {
           "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
           "--normal-border": "var(--border)",
+          "--normal-text": "var(--popover-foreground)",
         } as React.CSSProperties
       }
       {...props}

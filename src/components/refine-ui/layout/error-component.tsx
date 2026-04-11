@@ -1,10 +1,9 @@
+import { useGo, useResourceParams, useTranslate } from "@refinedev/core";
+import { ChevronLeft, InfoIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { useGo, useResourceParams } from "@refinedev/core";
-import { useTranslate } from "@refinedev/core";
-import { ChevronLeft, InfoIcon } from "lucide-react";
-import { useEffect, useState } from "react";
 
 /**
  * When the app is navigated to a non-existent route, refine shows a default error page.

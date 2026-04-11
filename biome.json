@@ -1,6 +1,6 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.11/schema.json",
-  "assists": {
+  "assist": {
     "actions": {
       "source": {
         "useSortedKeys": "on"
@@ -8,9 +8,14 @@
     },
     "enabled": true
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "files": {
-    "ignore": ["node_modules", "dist", "public/mockServiceWorker.js"],
-    "ignoreUnknown": true
+    "ignoreUnknown": true,
+    "includes": ["**", "!**/node_modules", "!**/dist", "!**/public/mockServiceWorker.js"]
   },
   "formatter": {
     "enabled": true,
@@ -41,10 +46,11 @@
   },
   "overrides": [
     {
-      "include": ["src/components/ui/**", "src/components/refine-ui/**"],
+      "includes": ["src/components/ui/**", "src/components/refine-ui/**"],
       "linter": {
         "rules": {
           "a11y": {
+            "noStaticElementInteractions": "off",
             "useFocusableInteractive": "off",
             "useKeyWithClickEvents": "off",
             "useSemanticElements": "off"
@@ -53,7 +59,8 @@
             "useExhaustiveDependencies": "off"
           },
           "suspicious": {
-            "noArrayIndexKey": "off"
+            "noArrayIndexKey": "off",
+            "noDocumentCookie": "off"
           }
         }
       }

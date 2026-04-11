@@ -1,3 +1,5 @@
+import { useGetIdentity, useLogout } from "@refinedev/core";
+import { LogOut, User } from "lucide-react";
 import { ThemeToggle } from "@/components/refine-ui/theme/theme-toggle";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -11,8 +13,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import type { User as UserType } from "@/types";
-import { useGetIdentity, useLogout } from "@refinedev/core";
-import { LogOut, User } from "lucide-react";
 
 export function Header() {
   const { data: identity } = useGetIdentity<UserType>();

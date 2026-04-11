@@ -2,20 +2,16 @@ import { Authenticated, Refine } from "@refinedev/core";
 import routerProvider, { CatchAllNavigate, NavigateToResource } from "@refinedev/react-router";
 import { Activity, Building2, Headset, Users } from "lucide-react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router";
-
+import { AppLayout } from "@/components/layout/app-layout";
 import { ErrorComponent } from "@/components/refine-ui/layout/error-component";
 import { Toaster } from "@/components/refine-ui/notification/toaster";
 import { useNotificationProvider } from "@/components/refine-ui/notification/use-notification-provider";
 import { ThemeProvider } from "@/components/refine-ui/theme/theme-provider";
-
-import { AppLayout } from "@/components/layout/app-layout";
-
+import { DashboardPage } from "@/pages/dashboard";
+import { LoginPage } from "@/pages/login";
 import { accessControlProvider } from "@/providers/access-control";
 import { authProvider } from "@/providers/auth-provider";
 import { dataProvider } from "@/providers/data-provider";
-
-import { DashboardPage } from "@/pages/dashboard";
-import { LoginPage } from "@/pages/login";
 
 function App() {
   return (
@@ -29,44 +25,44 @@ function App() {
           notificationProvider={useNotificationProvider}
           resources={[
             {
-              name: "users",
-              list: "/users",
               create: "/users/create",
               edit: "/users/edit/:id",
-              show: "/users/show/:id",
+              list: "/users",
               meta: {
-                label: "Users",
                 icon: <Users size={16} />,
+                label: "Users",
               },
+              name: "users",
+              show: "/users/show/:id",
             },
             {
-              name: "institutions",
-              list: "/institutions",
               create: "/institutions/create",
               edit: "/institutions/edit/:id",
-              show: "/institutions/show/:id",
+              list: "/institutions",
               meta: {
-                label: "Institutions",
                 icon: <Building2 size={16} />,
+                label: "Institutions",
               },
+              name: "institutions",
+              show: "/institutions/show/:id",
             },
             {
-              name: "sessions",
               list: "/sessions",
-              show: "/sessions/show/:id",
               meta: {
-                label: "Sessions",
                 icon: <Headset size={16} />,
+                label: "Sessions",
               },
+              name: "sessions",
+              show: "/sessions/show/:id",
             },
             {
-              name: "results",
               list: "/results",
-              show: "/results/show/:id",
               meta: {
-                label: "Results",
                 icon: <Activity size={16} />,
+                label: "Results",
               },
+              name: "results",
+              show: "/results/show/:id",
             },
           ]}
           options={{

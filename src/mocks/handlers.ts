@@ -1,5 +1,5 @@
+import { HttpResponse, http } from "msw";
 import type { TokenPayload } from "@/types";
-import { http, HttpResponse } from "msw";
 
 function makeToken(payload: TokenPayload): string {
   const header = btoa(JSON.stringify({ alg: "none", typ: "JWT" }));
@@ -12,47 +12,47 @@ const MOCK_USERS: Array<{ email: string; password: string; payload: TokenPayload
     email: "platform-admin@example.com",
     password: "password",
     payload: {
-      sub: "usr_1",
-      name: "Platform Admin",
       email: "platform-admin@example.com",
-      role: "platform_admin",
       exp: 9_999_999_999,
+      name: "Platform Admin",
+      role: "platform_admin",
+      sub: "usr_1",
     },
   },
   {
     email: "institution-admin@example.com",
     password: "password",
     payload: {
-      sub: "usr_2",
-      name: "Institution Admin",
       email: "institution-admin@example.com",
-      role: "institution_admin",
-      institutionId: "inst_1",
       exp: 9_999_999_999,
+      institutionId: "inst_1",
+      name: "Institution Admin",
+      role: "institution_admin",
+      sub: "usr_2",
     },
   },
   {
     email: "trainer@example.com",
     password: "password",
     payload: {
-      sub: "usr_3",
-      name: "Trainer User",
       email: "trainer@example.com",
-      role: "trainer",
-      institutionId: "inst_1",
       exp: 9_999_999_999,
+      institutionId: "inst_1",
+      name: "Trainer User",
+      role: "trainer",
+      sub: "usr_3",
     },
   },
   {
     email: "trainee@example.com",
     password: "password",
     payload: {
-      sub: "usr_4",
-      name: "Trainee User",
       email: "trainee@example.com",
-      role: "trainee",
-      institutionId: "inst_1",
       exp: 9_999_999_999,
+      institutionId: "inst_1",
+      name: "Trainee User",
+      role: "trainee",
+      sub: "usr_4",
     },
   },
 ];

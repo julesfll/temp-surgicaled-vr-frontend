@@ -1,5 +1,5 @@
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import type { PropsWithChildren } from "react";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "./app-sidebar";
 import { Header } from "./header";
 

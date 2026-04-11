@@ -20,8 +20,8 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
   if (!response.ok) {
     const error = await response.json().catch(() => ({}));
     throw {
-      status: response.status,
       message: (error as { message?: string }).message ?? response.statusText,
+      status: response.status,
     };
   }
 
@@ -42,6 +42,20 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
  *   DELETE /{resource}/{id}      → {}
  */
 export const dataProvider: DataProvider = {
+  create: async ({ resource, variables }) => {
+    const result = await request<{ data: unknown }>(`/${resource}`, {
+      body: JSON.stringify(variables),
+      method: "POST",
+    });
+    return { data: result.data as never };
+  },
+
+  deleteOne: async ({ resource, id }) => {
+    await request(`/${resource}/${id}`, { method: "DELETE" });
+    return { data: { id } as never };
+  },
+
+  getApiUrl: () => API_URL,
   getList: async ({ resource, pagination, sorters, filters }) => {
     const params = new URLSearchParams();
 
@@ -76,26 +90,11 @@ export const dataProvider: DataProvider = {
     return { data: result.data as never };
   },
 
-  create: async ({ resource, variables }) => {
-    const result = await request<{ data: unknown }>(`/${resource}`, {
-      method: "POST",
-      body: JSON.stringify(variables),
-    });
-    return { data: result.data as never };
-  },
-
   update: async ({ resource, id, variables }) => {
     const result = await request<{ data: unknown }>(`/${resource}/${id}`, {
-      method: "PUT",
       body: JSON.stringify(variables),
+      method: "PUT",
     });
     return { data: result.data as never };
   },
-
-  deleteOne: async ({ resource, id }) => {
-    await request(`/${resource}/${id}`, { method: "DELETE" });
-    return { data: { id } as never };
-  },
-
-  getApiUrl: () => API_URL,
 };

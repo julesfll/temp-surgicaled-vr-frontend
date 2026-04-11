@@ -1,9 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { type BaseKey, useShowButton } from "@refinedev/core";
 import { Eye } from "lucide-react";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 type ShowButtonProps = {
   /**
@@ -33,10 +33,10 @@ type ShowButtonProps = {
 export const ShowButton = React.forwardRef<React.ComponentRef<typeof Button>, ShowButtonProps>(
   ({ resource, recordItemId, accessControl, meta, children, onClick, ...rest }, ref) => {
     const { hidden, disabled, LinkComponent, to, label } = useShowButton({
-      resource,
-      id: recordItemId,
       accessControl,
+      id: recordItemId,
       meta,
+      resource,
     });
 
     const isDisabled = disabled || rest.disabled;

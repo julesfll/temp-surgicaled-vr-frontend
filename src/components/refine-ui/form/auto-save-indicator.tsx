@@ -1,9 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { type AutoSaveIndicatorProps, useTranslate } from "@refinedev/core";
 import { AlertTriangle, CheckCircle2, Clock, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 type Props = AutoSaveIndicatorProps;
 
@@ -26,6 +26,18 @@ export function AutoSaveIndicator({ status, elements: elementsFromProps }: Props
   }, [status]);
 
   const elements = {
+    error: elementsFromProps?.error ?? (
+      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-rose-400", "px-3")}>
+        <AlertTriangle className={cn("h-4", "w-4", "mr-2")} />
+        <span className={cn("font-medium")}>{t("autoSave.failed", "Failed")}</span>
+      </div>
+    ),
+    idle: elementsFromProps?.idle ?? (
+      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-slate-500", "px-3")}>
+        <Clock className={cn("h-4", "w-4", "mr-2")} />
+        <span>{t("autoSave.idle", "Idle")} </span>
+      </div>
+    ),
     pending: elementsFromProps?.loading ?? (
       <div className={cn("flex", "items-center", "h-9", "text-sm", "text-sky-600", "px-3")}>
         <Loader2 className={cn("h-4", "w-4", "mr-2", "animate-spin")} />
@@ -50,18 +62,6 @@ export function AutoSaveIndicator({ status, elements: elementsFromProps }: Props
       >
         <CheckCircle2 className={cn("h-4", "w-4", "mr-2")} />
         <span className={cn("font-medium")}>{t("autoSave.saved", "Saved")}</span>
-      </div>
-    ),
-    error: elementsFromProps?.error ?? (
-      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-rose-400", "px-3")}>
-        <AlertTriangle className={cn("h-4", "w-4", "mr-2")} />
-        <span className={cn("font-medium")}>{t("autoSave.failed", "Failed")}</span>
-      </div>
-    ),
-    idle: elementsFromProps?.idle ?? (
-      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-slate-500", "px-3")}>
-        <Clock className={cn("h-4", "w-4", "mr-2")} />
-        <span>{t("autoSave.idle", "Idle")} </span>
       </div>
     ),
   };

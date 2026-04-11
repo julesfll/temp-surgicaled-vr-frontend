@@ -1,12 +1,11 @@
 "use client";
 
+import { useResourceParams, useUserFriendlyName } from "@refinedev/core";
 import type { PropsWithChildren } from "react";
-
 import { CreateButton } from "@/components/refine-ui/buttons/create";
 import { Breadcrumb } from "@/components/refine-ui/layout/breadcrumb";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import { useResourceParams, useUserFriendlyName } from "@refinedev/core";
 
 type ListViewProps = PropsWithChildren<{
   className?: string;

@@ -29,6 +29,9 @@ Set `VITE_AUTH_DISABLED=true` to disable sign-in requirements and allow all rout
 
 For normal auth behavior, keep it `false`.
 
+Set `VITE_DEV_ROLE_SWITCHER=true` to enable a development-only role switcher
+dropdown in the top header (Platform Admin, Institution Admin, Instructor, Trainee).
+
 ## Mock credentials
 
 When running `pnpm dev:mock`:

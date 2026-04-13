@@ -27,19 +27,21 @@ export function AutoSaveIndicator({ status, elements: elementsFromProps }: Props
 
   const elements = {
     error: elementsFromProps?.error ?? (
-      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-rose-400", "px-3")}>
+      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-destructive", "px-3")}>
         <AlertTriangle className={cn("h-4", "w-4", "mr-2")} />
         <span className={cn("font-medium")}>{t("autoSave.failed", "Failed")}</span>
       </div>
     ),
     idle: elementsFromProps?.idle ?? (
-      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-slate-500", "px-3")}>
+      <div
+        className={cn("flex", "items-center", "h-9", "text-sm", "text-muted-foreground", "px-3")}
+      >
         <Clock className={cn("h-4", "w-4", "mr-2")} />
         <span>{t("autoSave.idle", "Idle")} </span>
       </div>
     ),
     pending: elementsFromProps?.loading ?? (
-      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-sky-600", "px-3")}>
+      <div className={cn("flex", "items-center", "h-9", "text-sm", "text-primary", "px-3")}>
         <Loader2 className={cn("h-4", "w-4", "mr-2", "animate-spin")} />
         <span className={cn("font-medium")}>{t("autoSave.saving", "Saving")}</span>
       </div>
@@ -51,7 +53,7 @@ export function AutoSaveIndicator({ status, elements: elementsFromProps }: Props
           "items-center",
           "h-9",
           "text-sm",
-          "text-emerald-500",
+          "text-success",
           "transition-opacity",
           "duration-500",
           "px-3",

@@ -11,7 +11,22 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { cn, cva } from "@/lib/utils";
 import { type LoginFormValues, loginSchema } from "@/schemas/auth";
+
+const loginPageRootVariants = cva("flex min-h-svh items-center justify-center bg-background");
+
+const loginCardVariants = cva(
+  "w-full max-w-sm rounded-card border border-border bg-card p-8 text-card-foreground shadow-elevated",
+);
+
+const loginCardHeaderVariants = cva("mb-6 flex flex-col gap-1");
+
+const loginTitleVariants = cva("text-2xl font-semibold tracking-tight text-foreground");
+
+const loginSubtitleVariants = cva("text-sm text-muted-foreground");
+
+const loginFormVariants = cva("flex flex-col gap-4");
 
 export function LoginPage() {
   const { mutate: login, isPending } = useLogin<LoginFormValues>();
@@ -22,16 +37,16 @@ export function LoginPage() {
   });
 
   return (
-    <div className="flex min-h-svh items-center justify-center bg-background">
-      <div className="w-full max-w-sm rounded-xl border bg-card p-8 shadow-sm">
-        <div className="mb-6 flex flex-col gap-1">
-          <h1 className="text-2xl font-bold">SurgicalEd VR</h1>
-          <p className="text-sm text-muted-foreground">Sign in to your account</p>
+    <div className={cn(loginPageRootVariants())}>
+      <div className={cn(loginCardVariants())}>
+        <div className={cn(loginCardHeaderVariants())}>
+          <h1 className={cn(loginTitleVariants())}>SurgicalEd VR</h1>
+          <p className={cn(loginSubtitleVariants())}>Sign in to your account</p>
         </div>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit((values) => login(values))}
-            className="flex flex-col gap-4"
+            className={cn(loginFormVariants())}
           >
             <FormField
               control={form.control}

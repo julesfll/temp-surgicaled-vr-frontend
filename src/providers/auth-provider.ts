@@ -2,7 +2,7 @@ import type { AuthProvider } from "@refinedev/core";
 import { AUTH_DISABLED } from "@/config/auth-mode";
 import type { TokenPayload, UserRole } from "@/types";
 
-const TOKEN_KEY = "surgicaled_token";
+export const TOKEN_KEY = "surgicaled_token";
 const API_URL = import.meta.env.VITE_API_URL ?? "";
 
 /** Decode JWT payload without verification (verification is server-side) */
@@ -22,6 +22,32 @@ function isTokenExpired(payload: TokenPayload): boolean {
 
 export function getStoredToken(): string | null {
   return localStorage.getItem(TOKEN_KEY);
+}
+
+function encodeToken(payload: TokenPayload): string {
+  const header = btoa(JSON.stringify({ alg: "none", typ: "JWT" }));
+  const body = btoa(JSON.stringify(payload));
+  return `${header}.${body}.dev-signature`;
+}
+
+export function setDevRoleToken(role: UserRole): void {
+  const roleLabels: Record<UserRole, string> = {
+    institution_admin: "Institution Admin",
+    instructor: "Instructor",
+    platform_admin: "Platform Admin",
+    trainee: "Trainee",
+  };
+
+  const token = encodeToken({
+    email: `${role.replace("_", "-")}@local.test`,
+    exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
+    institutionId: role === "platform_admin" ? undefined : "inst_dev",
+    name: `${roleLabels[role]} (Dev)`,
+    role,
+    sub: `dev-${role}`,
+  });
+
+  localStorage.setItem(TOKEN_KEY, token);
 }
 
 export const authProvider: AuthProvider = {

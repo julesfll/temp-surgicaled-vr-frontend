@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Admin/management dashboard for a VR surgery training platform. Serves **admins**, **trainers**, and **trainees** for managing users, institutions, VR sessions, and viewing performance results. No direct VR integration in this repo.
+Admin/management dashboard for a VR surgery training platform. Serves **admins**, **instructors**, and **trainees** for managing users, institutions, VR sessions, and viewing performance results. No direct VR integration in this repo.
 
 **Backend**: Lambda TypeScript REST API + DynamoDB (separate repo, API spec TBD)
 **Auth**: AWS Cognito (managed server-side — frontend just calls REST auth endpoints and stores JWTs)
@@ -55,7 +55,7 @@ pnpm test:e2e      # Playwright E2E tests
 |---|---|
 | `auth-provider.ts` | Calls backend REST auth endpoints (`/auth/login`, `/auth/logout`). Decodes JWT, checks expiry, provides role for RBAC. |
 | `data-provider.ts` | Custom Refine `DataProvider` calling the Lambda REST API. Attaches JWT `Authorization` header automatically. |
-| `access-control.ts` | Refine `accessControlProvider` — RBAC matrix for admin/trainer/trainee roles. |
+| `access-control.ts` | Refine `accessControlProvider` — RBAC matrix for admin/instructor/trainee roles. |
 
 ### Layout (`src/components/layout/`)
 
@@ -85,7 +85,7 @@ Base shadcn components copied into the project. Also project-owned and customiza
 - **Linting**: Use BiomeJS — NOT ESLint. Run `pnpm check` to lint and format.
 - **Imports**: Biome organizes imports automatically. Don't manually sort.
 - **Refine hooks first**: Use Refine's built-in hooks (`useList`, `useOne`, `useCreate`, `useUpdate`, `useDelete`, `useForm`, `useCan`, `useGetIdentity`, `useMenu`, etc.) for all data/auth/navigation. Don't reinvent what Refine provides.
-- **RBAC**: Use `useCan` from `@refinedev/core` in components to check permissions. Use `<CanAccess>` for conditional rendering. Roles: `platform_admin`, `institution_admin`, `trainer`, `trainee`.
+- **RBAC**: Use `useCan` from `@refinedev/core` in components to check permissions. Use `<CanAccess>` for conditional rendering. Roles: `platform_admin`, `institution_admin`, `instructor`, `trainee`.
 - **Notifications**: Use Refine's `useNotification()` hook — it's connected to the Sonner toast provider.
 - **API mocking**: Add MSW handlers to `src/mocks/handlers.ts` when API spec is defined. Run `pnpm dev:mock` to test locally without the backend.
 

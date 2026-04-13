@@ -1,6 +1,6 @@
 # SurgicalEd VR — Frontend Dashboard
 
-Admin and management dashboard for a VR surgery training platform. Serves platform admins, institution admins, trainers, and trainees across multiple institutions.
+Admin and management dashboard for a VR surgery training platform. Serves platform admins, institution admins, instructors, and trainees across multiple institutions.
 
 ## Stack
 
@@ -37,7 +37,7 @@ When running `pnpm dev:mock`:
 |---|---|---|
 | `platform-admin@example.com` | `password` | Platform Admin |
 | `institution-admin@example.com` | `password` | Institution Admin |
-| `trainer@example.com` | `password` | Trainer |
+| `instructor@example.com` | `password` | Instructor |
 | `trainee@example.com` | `password` | Trainee |
 
 ## Commands

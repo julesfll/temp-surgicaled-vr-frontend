@@ -32,14 +32,14 @@ const MOCK_USERS: Array<{ email: string; password: string; payload: TokenPayload
     },
   },
   {
-    email: "trainer@example.com",
+    email: "instructor@example.com",
     password: "password",
     payload: {
-      email: "trainer@example.com",
+      email: "instructor@example.com",
       exp: 9_999_999_999,
       institutionId: "inst_1",
-      name: "Trainer User",
-      role: "trainer",
+      name: "Instructor User",
+      role: "instructor",
       sub: "usr_3",
     },
   },

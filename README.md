@@ -23,6 +23,12 @@ pnpm dev        # dev server against real backend (requires VITE_API_URL)
 
 Copy `.env.example` to `.env.local` and set `VITE_API_URL` for real backend usage.
 
+### Auth bypass (local dev)
+
+Set `VITE_AUTH_DISABLED=true` to disable sign-in requirements and allow all routes/actions locally.
+
+For normal auth behavior, keep it `false`.
+
 ## Mock credentials
 
 When running `pnpm dev:mock`:

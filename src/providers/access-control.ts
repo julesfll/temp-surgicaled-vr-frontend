@@ -1,4 +1,5 @@
 import type { AccessControlProvider } from "@refinedev/core";
+import { AUTH_DISABLED } from "@/config/auth-mode";
 import type { UserRole } from "@/types";
 
 type Action = "list" | "show" | "create" | "edit" | "delete" | string;
@@ -43,6 +44,10 @@ const permissions: Record<UserRole, Record<string, Action[]>> = {
 
 export const accessControlProvider: AccessControlProvider = {
   can: async ({ resource, action, params: _params }) => {
+    if (AUTH_DISABLED) {
+      return { can: true };
+    }
+
     // Retrieve role from stored token (same as getPermissions in auth provider)
     const token = localStorage.getItem("surgicaled_token");
     if (!token) return { can: false, reason: "Not authenticated" };

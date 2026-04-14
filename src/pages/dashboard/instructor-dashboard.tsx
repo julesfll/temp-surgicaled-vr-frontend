@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { cn, cva } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 const modules = [
   {
@@ -40,31 +40,30 @@ const workloadSeries = [
   { id: "lee", load: 55, name: "Lee" },
 ];
 
-const rootVariants = cva("flex flex-col gap-6");
-const sectionCard = cva("rounded-card border border-border bg-card p-6 shadow-surface");
-const sectionTitle = cva("text-lg font-semibold text-foreground");
-const filterControl = cva(
-  "h-11 rounded-md border border-input bg-card px-3 text-sm text-foreground outline-none ring-ring focus-visible:ring-2",
-);
+const rootClassName = "flex flex-col gap-6";
+const sectionCardClassName = "rounded-card border border-border bg-card p-6 shadow-surface";
+const sectionTitleClassName = "text-lg font-semibold text-foreground";
+const filterControlClassName =
+  "h-11 rounded-md border border-input bg-card px-3 text-sm text-foreground outline-none ring-ring focus-visible:ring-2";
 
 export function InstructorDashboardPage() {
   return (
-    <div className={cn(rootVariants())}>
+    <div className={cn(rootClassName)}>
       <section className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_180px_180px]">
         <label className="relative">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
-            className={cn(filterControl(), "pl-9")}
+            className={cn(filterControlClassName, "pl-9")}
             placeholder="Search procedure name or ID..."
           />
         </label>
-        <select className={cn(filterControl())} defaultValue="all">
+        <select className={cn(filterControlClassName)} defaultValue="all">
           <option value="all">All Procedures</option>
           <option value="general">General Surgery</option>
           <option value="vascular">Vascular</option>
           <option value="ortho">Orthopedic</option>
         </select>
-        <select className={cn(filterControl())} defaultValue="difficulty-all">
+        <select className={cn(filterControlClassName)} defaultValue="difficulty-all">
           <option value="difficulty-all">Difficulty: All</option>
           <option value="level-1">Level 1 (Basic)</option>
           <option value="level-2">Level 2 (Intermediate)</option>
@@ -75,7 +74,7 @@ export function InstructorDashboardPage() {
       <section className="grid grid-cols-1 gap-6 xl:grid-cols-12">
         <div className="flex flex-col gap-6 xl:col-span-8">
           <div className="flex items-center justify-between">
-            <h2 className={cn(sectionTitle())}>Module Library</h2>
+            <h2 className={cn(sectionTitleClassName)}>Module Library</h2>
             <span className="text-sm text-muted-foreground">14 available</span>
           </div>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
@@ -113,9 +112,9 @@ export function InstructorDashboardPage() {
             ))}
           </div>
 
-          <section className={cn(sectionCard())}>
+          <section className={cn(sectionCardClassName)}>
             <div className="mb-4 flex items-center justify-between">
-              <h3 className={cn(sectionTitle())}>Assignment Calendar</h3>
+              <h3 className={cn(sectionTitleClassName)}>Assignment Calendar</h3>
               <button type="button" className="text-sm font-medium text-primary hover:underline">
                 Full Calendar
               </button>
@@ -156,8 +155,8 @@ export function InstructorDashboardPage() {
         </div>
 
         <aside className="flex flex-col gap-6 xl:col-span-4">
-          <section className={cn(sectionCard())}>
-            <h3 className={cn(sectionTitle())}>Trainee Workload</h3>
+          <section className={cn(sectionCardClassName)}>
+            <h3 className={cn(sectionTitleClassName)}>Trainee Workload</h3>
             <p className="mt-1 text-xs text-muted-foreground">
               Active modules per resident (Current Week)
             </p>

@@ -12,18 +12,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { cn, cva } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import type { User as UserType } from "@/types";
 
-const appHeaderVariants = cva(
-  "flex h-14 shrink-0 items-center gap-2 border-b border-border bg-card px-4 text-card-foreground shadow-surface",
-);
-
-const headerUserLabelVariants = cva("font-medium text-foreground");
-
-const headerUserMetaVariants = cva("text-xs text-muted-foreground");
-
-const headerSignOutItemVariants = cva("text-destructive focus:text-destructive");
+const appHeaderClassName =
+  "flex h-14 shrink-0 items-center gap-2 border-b border-border bg-card px-4 text-card-foreground shadow-surface";
+const headerUserLabelClassName = "font-medium text-foreground";
+const headerUserMetaClassName = "text-xs text-muted-foreground";
+const headerSignOutItemClassName = "text-destructive focus:text-destructive";
 
 export function Header() {
   const { data: identity } = useGetIdentity<UserType>();
@@ -45,7 +41,7 @@ export function Header() {
     : "?";
 
   return (
-    <header className={cn(appHeaderVariants(), "shadow-none")}>
+    <header className={cn(appHeaderClassName, "shadow-none")}>
       <SidebarTrigger className="-ml-1" />
       <div className="ml-2 flex-1">
         <h1 className="text-base font-semibold text-foreground">
@@ -64,10 +60,10 @@ export function Header() {
         <DropdownMenuContent align="end" className="w-56">
           <DropdownMenuLabel>
             <div className="flex flex-col gap-1">
-              <span className={cn(headerUserLabelVariants())}>{identity?.name ?? "User"}</span>
-              <span className={cn(headerUserMetaVariants())}>{identity?.email}</span>
+              <span className={cn(headerUserLabelClassName)}>{identity?.name ?? "User"}</span>
+              <span className={cn(headerUserMetaClassName)}>{identity?.email}</span>
               {identity?.role && (
-                <span className={cn(headerUserMetaVariants(), "capitalize")}>{identity.role}</span>
+                <span className={cn(headerUserMetaClassName, "capitalize")}>{identity.role}</span>
               )}
             </div>
           </DropdownMenuLabel>
@@ -77,7 +73,7 @@ export function Header() {
             Profile
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={() => logout()} className={cn(headerSignOutItemVariants())}>
+          <DropdownMenuItem onClick={() => logout()} className={cn(headerSignOutItemClassName)}>
             <LogOut className="mr-2 h-4 w-4" />
             Sign out
           </DropdownMenuItem>

@@ -1,6 +1,6 @@
 import { Activity, Clock3, Layers3, Search, Target } from "lucide-react";
 import type { ReactNode } from "react";
-import { cn, cva } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 
 type KpiCard = {
   change?: string;
@@ -96,11 +96,11 @@ const trendPoints = [
   { x: 92, y: 82 },
 ];
 
-const rootVariants = cva("flex flex-col gap-5");
-const sectionCardVariants = cva("rounded-card border border-border bg-card shadow-surface");
-const kpiCardVariants = cva("rounded-card border border-border bg-card px-4 py-3.5 shadow-surface");
-const sectionTitleVariants = cva("text-base font-semibold text-foreground");
-const sectionSubTitleVariants = cva("mt-0.5 text-xs text-muted-foreground");
+const rootClassName = "flex flex-col gap-5";
+const sectionCardClassName = "rounded-card border border-border bg-card shadow-surface";
+const kpiCardClassName = "rounded-card border border-border bg-card px-4 py-3.5 shadow-surface";
+const sectionTitleClassName = "text-base font-semibold text-foreground";
+const sectionSubTitleClassName = "mt-0.5 text-xs text-muted-foreground";
 
 function scoreTone(score: number): string {
   if (score >= 90) return "bg-success/15 text-success";
@@ -119,10 +119,10 @@ function polylinePoints() {
 
 export function TraineeDashboardPage() {
   return (
-    <div className={cn(rootVariants())}>
+    <div className={cn(rootClassName)}>
       <section className="grid grid-cols-1 gap-3 xl:grid-cols-4">
         {kpis.map((kpi) => (
-          <article key={kpi.label} className={cn(kpiCardVariants())}>
+          <article key={kpi.label} className={cn(kpiCardClassName)}>
             <div className="flex items-center justify-between">
               <p className="text-xs text-muted-foreground">{kpi.label}</p>
               <span className="rounded-full bg-secondary p-1.5">{kpi.icon}</span>
@@ -138,11 +138,11 @@ export function TraineeDashboardPage() {
       </section>
 
       <section className="grid grid-cols-1 gap-4 xl:grid-cols-[2fr_1fr]">
-        <article className={cn(sectionCardVariants(), "p-4")}>
+        <article className={cn(sectionCardClassName, "p-4")}>
           <div className="mb-3 flex items-start justify-between">
             <div>
-              <h2 className={cn(sectionTitleVariants())}>Performance Trend</h2>
-              <p className={cn(sectionSubTitleVariants())}>
+              <h2 className={cn(sectionTitleClassName)}>Performance Trend</h2>
+              <p className={cn(sectionSubTitleClassName)}>
                 Overall score progression across all modules
               </p>
             </div>
@@ -193,9 +193,9 @@ export function TraineeDashboardPage() {
           </div>
         </article>
 
-        <article className={cn(sectionCardVariants(), "p-4")}>
-          <h2 className={cn(sectionTitleVariants())}>Sessions by Module</h2>
-          <p className={cn(sectionSubTitleVariants())}>Distribution of training focus</p>
+        <article className={cn(sectionCardClassName, "p-4")}>
+          <h2 className={cn(sectionTitleClassName)}>Sessions by Module</h2>
+          <p className={cn(sectionSubTitleClassName)}>Distribution of training focus</p>
           <div className="mx-auto mt-4 size-44 rounded-full bg-[conic-gradient(var(--color-primary)_0_44%,var(--color-chart-2)_44%_74%,var(--color-chart-3)_74%_90%,rgb(203_213_225)_90%_100%)] p-4">
             <div className="size-full rounded-full bg-card" />
           </div>
@@ -213,11 +213,11 @@ export function TraineeDashboardPage() {
         </article>
       </section>
 
-      <section className={cn(sectionCardVariants(), "p-4")}>
+      <section className={cn(sectionCardClassName, "p-4")}>
         <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <h2 className={cn(sectionTitleVariants())}>Recent Sessions</h2>
-            <p className={cn(sectionSubTitleVariants())}>
+            <h2 className={cn(sectionTitleClassName)}>Recent Sessions</h2>
+            <p className={cn(sectionSubTitleClassName)}>
               Detailed history of your training activities
             </p>
           </div>

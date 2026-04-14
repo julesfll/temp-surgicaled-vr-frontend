@@ -22,25 +22,21 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { AUTH_DISABLED, DEV_ROLE_SWITCHER_ENABLED } from "@/config/auth-mode";
-import { cn, cva } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { setDevRoleToken } from "@/providers/auth-provider";
 import type { User, UserRole } from "@/types";
 
-const sidebarHeaderVariants = cva("border-b border-sidebar-border px-4 py-3");
-const sidebarBrandRowVariants = cva("flex items-center gap-2");
-const sidebarBrandMarkVariants = cva(
-  "flex size-7 items-center justify-center rounded-md bg-primary/10 text-primary",
-);
-const sidebarBrandTitleVariants = cva("font-semibold tracking-tight text-sidebar-foreground");
-const sidebarBrandSubTitleVariants = cva("text-[11px] text-tertiary");
-const sidebarRoleSwitcherWrapVariants = cva(
-  "flex flex-col gap-1.5 border-t border-sidebar-border px-3 pt-3",
-);
-const sidebarRoleSwitcherLabelVariants = cva("text-label text-muted-foreground");
-
-const sidebarNavIconSlotVariants = cva(
-  "flex size-4 shrink-0 items-center justify-center text-sidebar-foreground [&_svg]:size-4",
-);
+const sidebarHeaderClassName = "border-b border-sidebar-border px-4 py-3";
+const sidebarBrandRowClassName = "flex items-center gap-2";
+const sidebarBrandMarkClassName =
+  "flex size-7 items-center justify-center rounded-md bg-primary/10 text-primary";
+const sidebarBrandTitleClassName = "font-semibold tracking-tight text-sidebar-foreground";
+const sidebarBrandSubTitleClassName = "text-[11px] text-tertiary";
+const sidebarRoleSwitcherWrapClassName =
+  "flex flex-col gap-1.5 border-t border-sidebar-border px-3 pt-3";
+const sidebarRoleSwitcherLabelClassName = "text-label text-muted-foreground";
+const sidebarNavIconSlotClassName =
+  "flex size-4 shrink-0 items-center justify-center text-sidebar-foreground [&_svg]:size-4";
 
 const ROLE_OPTIONS: Array<{ label: string; value: UserRole }> = [
   { label: "Platform Admin", value: "platform_admin" },
@@ -63,14 +59,14 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader className={cn(sidebarHeaderVariants())}>
-        <div className={cn(sidebarBrandRowVariants())}>
-          <span className={cn(sidebarBrandMarkVariants())}>
+      <SidebarHeader className={cn(sidebarHeaderClassName)}>
+        <div className={cn(sidebarBrandRowClassName)}>
+          <span className={cn(sidebarBrandMarkClassName)}>
             <Activity className="size-4" />
           </span>
           <div className="flex flex-col">
-            <span className={cn(sidebarBrandTitleVariants())}>SurgicalEd VR</span>
-            <span className={cn(sidebarBrandSubTitleVariants())}>Training Console</span>
+            <span className={cn(sidebarBrandTitleClassName)}>SurgicalEd VR</span>
+            <span className={cn(sidebarBrandSubTitleClassName)}>Training Console</span>
           </div>
         </div>
       </SidebarHeader>
@@ -88,7 +84,7 @@ export function AppSidebar() {
                     <SidebarMenuButton asChild isActive={isActive}>
                       <Link to={item.route ?? "/"}>
                         {item.icon && (
-                          <span className={cn(sidebarNavIconSlotVariants())}>{item.icon}</span>
+                          <span className={cn(sidebarNavIconSlotClassName)}>{item.icon}</span>
                         )}
                         <span>{item.label}</span>
                       </Link>
@@ -102,10 +98,10 @@ export function AppSidebar() {
       </SidebarContent>
       {DEV_ROLE_SWITCHER_ENABLED && AUTH_DISABLED && (
         <SidebarFooter className={cn("p-0")}>
-          <div className={cn(sidebarRoleSwitcherWrapVariants())}>
+          <div className={cn(sidebarRoleSwitcherWrapClassName)}>
             <Label
               htmlFor="sidebar-dev-role-switcher"
-              className={cn(sidebarRoleSwitcherLabelVariants())}
+              className={cn(sidebarRoleSwitcherLabelClassName)}
             >
               Dev role switcher
             </Label>

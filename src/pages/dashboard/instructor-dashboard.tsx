@@ -1,5 +1,6 @@
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { RoleOutOfScopeBanner } from "./role-out-of-scope-banner";
 
 const modules = [
   {
@@ -49,6 +50,7 @@ const filterControlClassName =
 export function InstructorDashboardPage() {
   return (
     <div className={cn(rootClassName)}>
+      <RoleOutOfScopeBanner roleLabel="Instructor" />
       <section className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_180px_180px]">
         <label className="relative">
           <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />

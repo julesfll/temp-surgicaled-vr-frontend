@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { RoleOutOfScopeBanner } from "./role-out-of-scope-banner";
 
 const rootClassName = "flex flex-col gap-4";
 const cardClassName = "rounded-card border border-border bg-card p-5 shadow-surface";
@@ -7,6 +8,7 @@ const titleClassName = "text-base font-semibold text-foreground";
 export function InstitutionAdminDashboardPage() {
   return (
     <div className={cn(rootClassName)}>
+      <RoleOutOfScopeBanner roleLabel="Institution Admin" />
       <section className={cn(cardClassName)}>
         <h2 className={cn(titleClassName)}>Institution Admin Dashboard</h2>
         <p className="mt-1 text-sm text-muted-foreground">

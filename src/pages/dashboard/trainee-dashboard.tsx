@@ -1,6 +1,7 @@
 import { Activity, Clock3, Layers3, Search, Target } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { RoleOutOfScopeBanner } from "./role-out-of-scope-banner";
 
 type KpiCard = {
   change?: string;
@@ -120,6 +121,7 @@ function polylinePoints() {
 export function TraineeDashboardPage() {
   return (
     <div className={cn(rootClassName)}>
+      <RoleOutOfScopeBanner roleLabel="Trainee" />
       <section className="grid grid-cols-1 gap-3 xl:grid-cols-4">
         {kpis.map((kpi) => (
           <article key={kpi.label} className={cn(kpiCardClassName)}>

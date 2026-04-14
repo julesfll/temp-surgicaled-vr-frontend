@@ -4,11 +4,14 @@ import { Outlet, Route, Routes } from "react-router";
 import { AppLayout } from "@/components/layout/app-layout";
 import { ErrorComponent } from "@/components/refine-ui/layout/error-component";
 import { DashboardPage } from "@/pages/dashboard";
+import { LandingPage } from "@/pages/landing";
 import { LoginPage } from "@/pages/login";
 
 export function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<LandingPage />} />
+
       {/* Authenticated routes */}
       <Route
         element={
@@ -19,7 +22,6 @@ export function AppRoutes() {
           </Authenticated>
         }
       >
-        <Route index element={<NavigateToResource resource="users" />} />
         <Route path="/dashboard" element={<DashboardPage />} />
 
         {/* Resource routes — full pages added once API spec is defined */}

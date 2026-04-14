@@ -32,6 +32,8 @@ dist-ssr
 
 # Claude Code user-specific settings
 .claude/settings.local.json
+.cursor/
+.windsurf/
 
 # Testing
 coverage

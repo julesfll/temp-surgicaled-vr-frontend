@@ -4,7 +4,7 @@ import {
   Brain,
   Building2,
   ChevronDown,
-  Crosshair,
+
   GraduationCap,
   Headset,
   ShieldCheck,
@@ -147,9 +147,7 @@ function NavBar() {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <div className="flex items-center gap-2.5">
-          <div className="flex size-8 items-center justify-center rounded-lg bg-primary">
-            <Crosshair className="size-4 text-primary-foreground" />
-          </div>
+          <img src="/favicon.svg" alt="SurgicalEdVR" className="size-8" />
           <span className="text-lg font-semibold tracking-tight text-heading">SurgicalEdVR</span>
         </div>
         <div className="flex items-center gap-3">
@@ -264,6 +262,10 @@ export function LandingPage() {
               <a href="#mission">Learn more</a>
             </Button>
           </div>
+        </div>
+
+        <div className="absolute bottom-12">
+          <ScrollIndicator />
         </div>
       </section>
 
@@ -386,9 +388,7 @@ export function LandingPage() {
       <footer className="border-t border-border px-6 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
           <div className="flex items-center gap-2.5">
-            <div className="flex size-7 items-center justify-center rounded-md bg-primary">
-              <Crosshair className="size-3.5 text-primary-foreground" />
-            </div>
+            <img src="/favicon.svg" alt="SurgicalEdVR" className="size-7" />
             <span className="text-sm font-semibold text-heading">SurgicalEdVR</span>
           </div>
           <p className="text-xs text-tertiary">

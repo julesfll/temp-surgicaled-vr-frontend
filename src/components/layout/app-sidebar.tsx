@@ -65,7 +65,7 @@ export function AppSidebar() {
             <Activity className="size-4" />
           </span>
           <div className="flex flex-col">
-            <span className={cn(sidebarBrandTitleClassName)}>SurgicalEd VR</span>
+            <span className={cn(sidebarBrandTitleClassName)}>SurgicalEdVR</span>
             <span className={cn(sidebarBrandSubTitleClassName)}>Training Console</span>
           </div>
         </div>

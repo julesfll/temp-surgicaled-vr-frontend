@@ -1,7 +1,15 @@
 import type { ResourceProps } from "@refinedev/core";
-import { Activity, Building2, Headset, Users } from "lucide-react";
+import { Activity, Building2, Headset, LayoutDashboard, Users } from "lucide-react";
 
 export const appResources: ResourceProps[] = [
+  {
+    list: "/overview",
+    meta: {
+      icon: <LayoutDashboard size={16} />,
+      label: "Overview",
+    },
+    name: "dashboard",
+  },
   {
     create: "/users/create",
     edit: "/users/edit/:id",

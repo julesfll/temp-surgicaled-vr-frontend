@@ -1,4 +1,4 @@
-# Contributing to SurgicalEd VR Frontend
+# Contributing to SurgicalEdVR Frontend
 
 ## Prerequisites
 

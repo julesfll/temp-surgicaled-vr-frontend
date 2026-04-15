@@ -1,4 +1,4 @@
-# SurgicalEd VR — Frontend Dashboard
+# SurgicalEdVR — Frontend Dashboard
 
 ## Project Overview
 

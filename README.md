@@ -1,4 +1,4 @@
-# SurgicalEd VR — Frontend Dashboard
+# SurgicalEdVR — Frontend Dashboard
 
 Admin and management dashboard for a VR surgery training platform. Serves platform admins, institution admins, instructors, and trainees across multiple institutions.
 

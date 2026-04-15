@@ -1,6 +1,6 @@
 import { Authenticated } from "@refinedev/core";
-import { CatchAllNavigate, NavigateToResource } from "@refinedev/react-router";
-import { Outlet, Route, Routes } from "react-router";
+import { CatchAllNavigate } from "@refinedev/react-router";
+import { Navigate, Outlet, Route, Routes } from "react-router";
 import { AppLayout } from "@/components/layout/app-layout";
 import { ErrorComponent } from "@/components/refine-ui/layout/error-component";
 import { DashboardPage } from "@/pages/dashboard";
@@ -22,7 +22,7 @@ export function AppRoutes() {
           </Authenticated>
         }
       >
-        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/overview" element={<DashboardPage />} />
 
         {/* Resource routes — full pages added once API spec is defined */}
         <Route
@@ -84,7 +84,7 @@ export function AppRoutes() {
       <Route
         element={
           <Authenticated key="public" fallback={<Outlet />}>
-            <NavigateToResource />
+            <Navigate to="/overview" replace />
           </Authenticated>
         }
       >

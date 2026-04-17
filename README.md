@@ -1,6 +1,6 @@
-# SurgicalEd VR — Frontend Dashboard
+# SurgicalEdVR — Frontend Dashboard
 
-Admin and management dashboard for a VR surgery training platform. Serves platform admins, institution admins, trainers, and trainees across multiple institutions.
+Admin and management dashboard for a VR surgery training platform. Serves platform admins, institution admins, instructors, and trainees across multiple institutions.
 
 ## Stack
 
@@ -23,6 +23,15 @@ pnpm dev        # dev server against real backend (requires VITE_API_URL)
 
 Copy `.env.example` to `.env.local` and set `VITE_API_URL` for real backend usage.
 
+### Auth bypass (local dev)
+
+Set `VITE_AUTH_DISABLED=true` to disable sign-in requirements and allow all routes/actions locally.
+
+For normal auth behavior, keep it `false`.
+
+Set `VITE_DEV_ROLE_SWITCHER=true` to enable a development-only role switcher
+dropdown in the top header (Platform Admin, Institution Admin, Instructor, Trainee).
+
 ## Mock credentials
 
 When running `pnpm dev:mock`:
@@ -31,7 +40,7 @@ When running `pnpm dev:mock`:
 |---|---|---|
 | `platform-admin@example.com` | `password` | Platform Admin |
 | `institution-admin@example.com` | `password` | Institution Admin |
-| `trainer@example.com` | `password` | Trainer |
+| `instructor@example.com` | `password` | Instructor |
 | `trainee@example.com` | `password` | Trainee |
 
 ## Commands

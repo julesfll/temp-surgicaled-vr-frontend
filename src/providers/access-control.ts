@@ -1,4 +1,5 @@
 import type { AccessControlProvider } from "@refinedev/core";
+import { AUTH_DISABLED } from "@/config/auth-mode";
 import type { UserRole } from "@/types";
 
 type Action = "list" | "show" | "create" | "edit" | "delete" | string;
@@ -9,40 +10,48 @@ type Action = "list" | "show" | "create" | "edit" | "delete" | string;
  * Scoping (which tenant's data is visible) is enforced server-side.
  * This matrix only defines which actions each role may perform at all.
  *
- *   platform_admin    — full access across all institutions
- *   institution_admin — manage their institution and its users
- *   trainer           — invite/manage their users, view stats
- *   trainee           — own profile and stats only
+ *   Platform Admin     — full access across all institutions
+ *   Institution Admin  — manage their institution and its users
+ *   Instructor         — invite/manage their users, view stats
+ *   Trainee            — own profile and stats only
  */
-const permissions: Record<UserRole, Record<string, Action[]>> = {
+export const resourceRoleMatrix: Record<UserRole, Record<string, Action[]>> = {
   institution_admin: {
+    dashboard: ["list"],
     institutions: ["show", "edit"],
     results: ["list", "show"],
     sessions: ["list", "show"],
     users: ["list", "show", "create", "edit", "delete"],
   },
+  instructor: {
+    dashboard: ["list"],
+    institutions: ["show"],
+    results: ["list", "show"],
+    sessions: ["list", "show"],
+    users: ["list", "show", "create", "edit"],
+  },
   platform_admin: {
+    dashboard: ["list"],
     institutions: ["list", "show", "create", "edit", "delete"],
     results: ["list", "show"],
     sessions: ["list", "show"],
     users: ["list", "show", "create", "edit", "delete"],
   },
   trainee: {
+    dashboard: ["list"],
     institutions: ["show"],
     results: ["list", "show"],
     sessions: ["list", "show"],
     users: ["show"],
   },
-  trainer: {
-    institutions: ["show"],
-    results: ["list", "show"],
-    sessions: ["list", "show"],
-    users: ["list", "show", "create", "edit"],
-  },
 };
 
 export const accessControlProvider: AccessControlProvider = {
   can: async ({ resource, action, params: _params }) => {
+    if (AUTH_DISABLED) {
+      return { can: true };
+    }
+
     // Retrieve role from stored token (same as getPermissions in auth provider)
     const token = localStorage.getItem("surgicaled_token");
     if (!token) return { can: false, reason: "Not authenticated" };
@@ -59,7 +68,7 @@ export const accessControlProvider: AccessControlProvider = {
 
     if (!role) return { can: false, reason: "No role assigned" };
 
-    const resourcePerms = permissions[role]?.[resource ?? ""] ?? [];
+    const resourcePerms = resourceRoleMatrix[role]?.[resource ?? ""] ?? [];
     const allowed = resourcePerms.includes(action);
 
     return {

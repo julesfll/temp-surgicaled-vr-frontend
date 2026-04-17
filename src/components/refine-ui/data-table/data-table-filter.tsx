@@ -62,7 +62,7 @@ export function DataTableFilterDropdown<TData>({
           <ListFilter className={cn("!h-3", "!w-3")} />
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="start" className={cn("w-full", "shadow-sm", contentClassName)}>
+      <PopoverContent align="start" className={cn("w-full", "shadow-surface", contentClassName)}>
         {children({ isOpen, setIsOpen })}
       </PopoverContent>
     </Popover>

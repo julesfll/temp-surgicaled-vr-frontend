@@ -4,7 +4,6 @@ import {
   Brain,
   Building2,
   ChevronDown,
-
   GraduationCap,
   Headset,
   ShieldCheck,

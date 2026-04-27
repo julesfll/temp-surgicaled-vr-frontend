@@ -19,7 +19,7 @@ importers:
         version: 5.0.4(@refinedev/core@5.0.12(@tanstack/react-query@5.99.0(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-hook-form@7.72.1(react@19.2.5))(react@19.2.5)
       '@refinedev/react-router':
         specifier: ^2.0.4
-        version: 2.0.4(@refinedev/core@5.0.12(@tanstack/react-query@5.99.0(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-router@7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)
+        version: 2.0.4(@refinedev/core@5.0.12(@tanstack/react-query@5.99.0(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)
       '@refinedev/react-table':
         specifier: ^6.0.1
         version: 6.0.1(@refinedev/core@5.0.12(@tanstack/react-query@5.99.0(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@tanstack/react-table@8.21.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -43,7 +43,7 @@ importers:
         version: 4.1.0
       lucide-react:
         specifier: latest
-        version: 1.8.0(react@19.2.5)
+        version: 1.11.0(react@19.2.5)
       radix-ui:
         specifier: ^1.4.3
         version: 1.4.3(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -60,8 +60,8 @@ importers:
         specifier: ^7.72.1
         version: 7.72.1(react@19.2.5)
       react-router:
-        specifier: ^7.14.0
-        version: 7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+        specifier: ^7.14.2
+        version: 7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       sonner:
         specifier: ^2.0.7
         version: 2.0.7(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -2046,8 +2046,8 @@ packages:
     resolution: {integrity: sha512-JvNw9Y81y33E+BEYPr0U7omo+U9AySnsMsEiXgwT6yqd31VQWTLNQqmT4ou5eqPFUrTfIDFta2wKhB1hyohtAQ==}
     engines: {node: 20 || >=22}
 
-  lucide-react@1.8.0:
-    resolution: {integrity: sha512-WuvlsjngSk7TnTBJ1hsCy3ql9V9VOdcPkd3PKcSmM34vJD8KG6molxz7m7zbYFgICwsanQWmJ13JlYs4Zp7Arw==}
+  lucide-react@1.11.0:
+    resolution: {integrity: sha512-UOhjdztXCgdBReRcIhsvz2siIBogfv/lhJEIViCpLt924dO+GDms9T7DNoucI23s6kEPpe988m5N0D2ajnzb2g==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -2215,8 +2215,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-router@7.14.0:
-    resolution: {integrity: sha512-m/xR9N4LQLmAS0ZhkY2nkPA1N7gQ5TUVa5n8TgANuDTARbn1gt+zLPXEm7W0XDTbrQ2AJSJKhoa6yx1D8BcpxQ==}
+  react-router@7.14.2:
+    resolution: {integrity: sha512-yCqNne6I8IB6rVCH7XUvlBK7/QKyqypBFGv+8dj4QBFJiiRX+FG7/nkdAvGElyvVZ/HQP5N19wzteuTARXi5Gw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       react: '>=18'
@@ -3723,7 +3723,7 @@ snapshots:
       react-dom: 19.2.5(react@19.2.5)
       react-hook-form: 7.72.1(react@19.2.5)
 
-  '@refinedev/react-router@2.0.4(@refinedev/core@5.0.12(@tanstack/react-query@5.99.0(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-router@7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)':
+  '@refinedev/react-router@2.0.4(@refinedev/core@5.0.12(@tanstack/react-query@5.99.0(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)':
     dependencies:
       '@refinedev/core': 5.0.12(@tanstack/react-query@5.99.0(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@types/react': 19.2.14
@@ -3731,7 +3731,7 @@ snapshots:
       qs: 6.15.1
       react: 19.2.5
       react-dom: 19.2.5(react@19.2.5)
-      react-router: 7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
+      react-router: 7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
 
   '@refinedev/react-table@6.0.1(@refinedev/core@5.0.12(@tanstack/react-query@5.99.0(react@19.2.5))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(@tanstack/react-table@8.21.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
     dependencies:
@@ -4438,7 +4438,7 @@ snapshots:
 
   lru-cache@11.3.3: {}
 
-  lucide-react@1.8.0(react@19.2.5):
+  lucide-react@1.11.0(react@19.2.5):
     dependencies:
       react: 19.2.5
 
@@ -4647,7 +4647,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.14
 
-  react-router@7.14.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
+  react-router@7.14.2(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:
       cookie: 1.1.1
       react: 19.2.5
